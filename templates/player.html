@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Игроки</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+    <style>
+       input{
+          margin-right:100px;
+              
+           }
+       select{
+          margin-right:100px;
+              
+           }
+       label{margin-top:6px;margin-right:4px;}
+    </style>
+</head>
+<body class="container">
+            <div class="row" style="width:200px;float:left;">
+                  <form  method="post" class="post-form">
+                    {% csrf_token %}
+                         {{ form }}
+                     <button type="submit" class="save btn btn-default">Save</button>
+                    <a class="btn btn-outline-dark" href="/">Back</a>
+                  </form>
+        </div>
+<div >
+
+ <div style="margin-left:30px;margin-top:4px;">
+  <img src="{% static "images/note.jpg" %}"  width="500" height="350" alt="My image">
+ </div>
+</div>
+<div class="content">
+    </form>
+    {% if players.count > 0 %}
+    <h2>Список игроков</h2>
+    <table class="table">
+        <tr><th>Имя</th><th>Год рождения</th><th>Турниры</th><th>Организация</th><th></th></tr>
+        {% for student in players %}
+        <tr><td>{{ student.name }}</td><td>{{ student.age }}</td>
+            
+            <td>
+            {% for course in student.course.all %}
+            {{ course.name }}
+            {% endfor %}
+            </td> 
+        
+            <td>
+            {{student.org.name}}
+            </td></tr>
+{% endfor %}
+    </table>
+    {% endif %}
+</div>
+</body>

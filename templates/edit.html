@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Книги</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+     .content{
+     width:500px;
+     margin-left:20px;
+     padding-bottom:30px;
+     border:1px solid black;
+    </style>
+</head>
+<body class="container">
+<div class="content">
+ <div style="float:left;">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите название</label><br>
+            <input type="text" name="name" value="{{person.name}}" required />
+        </p>
+        <p>
+            <label>Введите год издания</label><br>
+            <input type="number" name="age" value="{{person.age}}" required />
+        </p>
+        <input style="margin-left:4px;" type="submit" value="Сохранить" >
+        <a class="btn btn-outline-dark" href="/org">Back</a>
+    </form>
+ </div>
+ <div style="margin-left:30px;margin-top:4px;">
+  <img src="{% static "images/books.png" %}"  width="200" height="200" alt="My image">
+ </div>
+</div>
+</body>
+</html>

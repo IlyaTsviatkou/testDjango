@@ -1,0 +1,9 @@
+Mail confirmation
+
+Nickname: {{ name }}
+
+Email: {{ email }}
+
+{{ text }}
+
+DateTime: {{ time }}

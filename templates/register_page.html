@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+       div {
+           width: 400px;
+        }
+    </style>
+</head>
+    
+    <h1 class="mt-4">Registration</h1>
+    <p><a class="btn btn-outline-dark" href="/">Back</a></p>
+<body class="container">
+<div class="test">
+<form id="add_form" method="post">
+            {%csrf_token%}
+            {{form}}
+            <button form="add_form" type="submit" class="btn btn-primary mt-5">Add</button>
+        </form>
+
+</div>
+</body>

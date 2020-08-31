@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+     div {
+      margin-top: 9%; 
+      }
+     </style>
+</head>
+<body class="container">
+
+   	<a class="btn btn-outline-dark" href="org" >Организации</a>
+        {% if request.user.is_authenticated  and request.user.profile.verified %}
+            {% if request.user.player.stbool %}
+	        <a class="btn btn-outline-dark" href="kab">Кабинет</a> 
+            {% else %}
+	        <a class="btn btn-outline-dark" href="player">Стать игроком</a>
+            {% endif %}
+        {% endif %}
+        {% url 'login_page' as url_login_page%}
+        <a class="btn btn-outline-dark" href="{{url_login_page}}">Authorise</a>
+        {% url 'register_page' as url_register_page%}
+        <a class="btn btn-outline-dark" href="{{url_register_page}}">Register</a>
+        {% url 'logout_page' as url_logout_page%}
+        <a class="btn btn-outline-danger" href="{{url_logout_page}}">Logout</a>
+{{request.user}}
+{{request.user.profile.verified}}
+<div class="mt-40 text-center">
+{% load static %}
+<img src="{% static "images/django.jpg" %}"  width="900" height="500" alt="My image">
+<div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+'''
+def edit(request, id):
+    try:
+        book = Book.objects.get(id=id)
+        if request.method == "POST":
+            book.name = request.POST.get("name")
+            book.age = request.POST.get("age")
+            book.save()
+            return HttpResponseRedirect("/book")
+        else:
+            return render(request, "edit.html", {"book": book})
+    except Book.DoesNotExist:
+        return HttpResponseNotFound("<h2>Book not found</h2>")
+    
+def delete(request, id):
+    try:
+        book = Book.objects.get(id=id)
+        book.delete()
+        return HttpResponseRedirect("/book")
+    except Book.DoesNotExist:
+        return HttpResponseNotFound("<h2>Book not found</h2>")
+''' 
